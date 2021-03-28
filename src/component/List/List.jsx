@@ -30,7 +30,7 @@ class List extends PureComponent {
               {this.props.toDos.map((item) => (
                 <div key={'id-' + item.id}>
                   <div className="shadow rounded card__base p-3 mb-3 rounded position-relative">
-                    <p className="py-2">{item.name}</p>
+                    <p className="py-2">{item.title}</p>
                     <div className="tool__bar">
                       <i
                         onClick={() => {
@@ -52,7 +52,7 @@ class List extends PureComponent {
                 if (this.props.toDos.length == 0) {
                   return <div>
                     <div className="w-100  rounded shadow p-5 card__base no-data text-center">
-                    <i class="far fa-folder-open"></i>
+                    <i className="far fa-folder-open"></i>
                     <div>
                     {
                     this.props.t('NoData')

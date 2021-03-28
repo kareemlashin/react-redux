@@ -13,7 +13,7 @@ export const getTodo = () => {
 
     return (dispatch) => {
         
-        axios.get("http://5ad4038b33667e001462443f.mockapi.io/api/v1/users").then(res => {
+        axios.get("https://5ea6f79384f6290016ba78c2.mockapi.io/api/todo").then(res => {
             dispatch({
                 type: 'GET_DATA',
                 toDo:res.data
@@ -36,7 +36,7 @@ export const createUser = (data) => {
     return (dispatch) => {
         
         var message='';
-        axios.post("http://5ad4038b33667e001462443f.mockapi.io/api/v1/users", data).then(res => {
+        axios.post("https://5ea6f79384f6290016ba78c2.mockapi.io/api/todo", data).then(res => {
             const users = res.data;
             dispatch({
                 type: Types.create,
@@ -80,7 +80,7 @@ export const createUser = (data) => {
 }
 export const remove = (id) => {
     return (dispatch) => {
-        axios.delete(`http://5ad4038b33667e001462443f.mockapi.io/api/v1/users/${id}`).then(res => {
+        axios.delete(`https://5ea6f79384f6290016ba78c2.mockapi.io/api/todo/${id}`).then(res => {
             dispatch({
                 type: Types.remove,
                 users: id
@@ -103,7 +103,7 @@ export const oneToDo = (todo) => {
 }
 export const updateName = (data, id) => {
     return (dispatch) => {
-        axios.put(`http://5ad4038b33667e001462443f.mockapi.io/api/v1/users/${id}`, data).then(res => {
+        axios.put(`https://5ea6f79384f6290016ba78c2.mockapi.io/api/todo/${id}`, data).then(res => {
             const news = res.data;
             dispatch({
                 type: Types.upd,

@@ -25,7 +25,7 @@ class Edit extends PureComponent {
   }
   render() {
     const validation = Yup.object({
-      name: Yup.string()
+      title: Yup.string()
         .min(5, this.props.t('minLength'))
         .max(25, this.props.t('maxLength'))
         .required(this.props.t('required')),
@@ -35,18 +35,18 @@ class Edit extends PureComponent {
       <div className="EditWrapper mb-5">
         <Formik
           initialValues={{
-            name: this.props.update.name,
+            title: this.props.update.title,
           }}
           onSubmit={this.print}
           validationSchema={validation}
         >
           <Form>
             <div>
-              <Field type="text" placeholder={this.props.t('placeholder')} className="w-100 rounded " name="name" />
+              <Field type="text" placeholder={this.props.t('placeholder')} className="w-100 rounded " name="title" />
             </div>
             <div>
               <div>
-                <ErrorMessage name="name" className="mt-2">
+                <ErrorMessage name="title" className="mt-2">
                   {(msg) => (
                     <div className="alert alert-danger mt-2" role="alert">
                       {msg}

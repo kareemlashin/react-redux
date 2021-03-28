@@ -30,7 +30,7 @@ class Add extends PureComponent {
   render() {
     
     const validation = Yup.object({
-      name: Yup.string()
+      title: Yup.string()
         .min(5, this.props.t('minLength'))
         .max(25, this.props.t('maxLength'))
         .required(this.props.t('required')),
@@ -39,7 +39,7 @@ class Add extends PureComponent {
       <div className="AddWrapper mb-5">
         <Formik
           initialValues={{
-            name: '',
+            title: '',
           }}
           onSubmit={this.print}
           validationSchema={validation}
@@ -54,12 +54,12 @@ class Add extends PureComponent {
                 type="text"
                 placeholder={this.props.t('placeholder')}
                 className="w-100 rounded "
-                name="name"
+                name="title"
               />
             </div>
             <div>
               <div>
-                <ErrorMessage name="name" className="mt-2">
+                <ErrorMessage name="title" className="mt-2">
                   {(msg) => (
                     <div className="alert alert-danger mt-2" role="alert">
                       {msg}
@@ -76,8 +76,8 @@ class Add extends PureComponent {
             >
               {
                 !this.props.spinner?this.props.t('Add'):
-                <div class="spinner-border text-light" role="status">
-                  <span class="sr-only">Loading...</span>
+                <div className="spinner-border text-light" role="status">
+                  <span className="sr-only">Loading...</span>
                 </div>
               }
             </button>

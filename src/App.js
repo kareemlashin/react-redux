@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import './assets/styles/index.scss'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import Home from './layout/Home/Home'
+import Edit from './component/Edit/Edit'
+import Add from './component/Add/Add'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom'
+import './i18n'
+import { Suspense } from 'react'
+import {Provider} from 'react-redux'
+import store from './core/store/store.js'
+import 'react-notifications/lib/notifications.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Provider store={store}>
+    <Suspense fallback={<></>}>
+
+    <div >
+
+      <Router>
+        <Route path={['/Add', '/Edit',"/","*"]}>
+          <Switch>
+            <Route exact path="/" component={Home} />
+
+            <Home>
+              <Switch>
+                <Route exact path="/Add" component={Add} />
+                <Route path="/Edit" component={Edit} />
+                <Redirect path="*" to="/" />
+
+              </Switch>
+            </Home>
+            <Redirect path="*" to="/" />
+
+          </Switch>
+        </Route>
+      </Router>
     </div>
-  );
+    </Suspense>
+    </Provider>
+
+  )
 }
 
-export default App;
+export default App

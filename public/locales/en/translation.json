@@ -1,0 +1,14 @@
+{
+    "title":"title",
+    "home":"home",
+    "minLength":"this field must be don't less than 5 cher",
+    "maxLength":"this field must be don't getter than 25 cher",
+    "required":"this field is required",
+    "Add":"Add",
+    "AddPage":"Add Page",
+    "placeholder":"add/edit new data",
+    "Edit":"edit",
+    "Name":"Name",
+    "NoData":"No Data please add any data"
+
+}

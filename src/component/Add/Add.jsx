@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react'
-//import { Test } from './Add.styles';
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { createUser } from '../../core/action/action'
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class Add extends PureComponent {
   constructor(props) {
@@ -13,19 +11,11 @@ class Add extends PureComponent {
 
     this.state = {
       hasError: false,
-      mas:0
     }
   }
-  not=(news,msg)=>{
-    if(news=='success'){
-    NotificationManager.success(msg);
-  }
-    else if(news=='error'){
-      NotificationManager.error(msg);}
-    }
   
   print = (values) => {
-    this.props.addTodo(values)
+    this.props.addTodo(values);
   }
   render() {
     
@@ -35,7 +25,9 @@ class Add extends PureComponent {
         .max(25, this.props.t('maxLength'))
         .required(this.props.t('required')),
     })
+
     return (
+      
       <div className="AddWrapper mb-5">
         <Formik
           initialValues={{
@@ -84,9 +76,7 @@ class Add extends PureComponent {
             </div>
           </Form>
         </Formik>
-        {this.props.message=='success'?this.not('success','success'):this.props.message=='error'?this.not('error','error'):''}
 
-        <NotificationContainer/>
 
       </div>
     )

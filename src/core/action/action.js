@@ -1,4 +1,6 @@
 import axios from 'axios'
+import {  toast } from 'react-toastify';
+import i18next from 'i18next'
 
 const Types = {
     get: '',
@@ -7,7 +9,8 @@ const Types = {
     one: 'SINGLE_DATA',
     upd: 'UPDATE_DATA',
     spinner:'spinner',
-    message:'message'
+    message:'message',
+    loadingPage:'loadingPage'
 }
 export const getTodo = () => {
 
@@ -22,11 +25,15 @@ export const getTodo = () => {
                 type: 'spinner',
                 spinner:false
             })
+            dispatch({
+                type: 'loadingPage',
+                loadingPage:false
+            })
         }).catch(err => {
             console.log(err)
             dispatch({
-                type: 'spinner',
-                spinner:false
+                type: 'loadingPage',
+                loadingPage:false
             })
         })
     }
@@ -34,7 +41,10 @@ export const getTodo = () => {
 
 export const createUser = (data) => {
     return (dispatch) => {
-        
+        dispatch({
+            type:Types.spinner,
+            spinner:true
+        });
         var message='';
         axios.post("https://5ea6f79384f6290016ba78c2.mockapi.io/api/todo", data).then(res => {
             const users = res.data;
@@ -46,15 +56,12 @@ export const createUser = (data) => {
                 type:Types.spinner,
                 spinner:false
             });
-            message='success';
+            
+            toast.success(i18next.t('messageSuccess'))
             dispatch({
                 type:Types.message,
-                message:message,
+                message:'',
 
-            });
-            dispatch({
-                type:Types.message,
-                message:''
             });
             
         }).catch(err => {
@@ -63,16 +70,9 @@ export const createUser = (data) => {
                 type:Types.spinner,
                 spinner:false
             });
-            message='error';
-            dispatch({
-                type:Types.message,
-                message:message
-            });
+            toast.error(i18next.t('messageError'))
+
             
-            dispatch({
-                type:Types.message,
-                message:''
-            });
             
         })
         
@@ -85,9 +85,12 @@ export const remove = (id) => {
                 type: Types.remove,
                 users: id
             })
+            toast.success(i18next.t('messageSuccess'))
 
         }).catch(err => {
-            console.log(err)
+            console.log(err);
+            toast.error(i18next.t('messageError'))
+
         })
 
     }
@@ -110,9 +113,12 @@ export const updateName = (data, id) => {
                 users: id,
                 news: news
             })
+            toast.success(i18next.t('messageSuccess'))
 
         }).catch(err => {
-            console.log(err)
+            console.log(err);
+            toast.error(i18next.t('messageError'))
+
         })
 
     }

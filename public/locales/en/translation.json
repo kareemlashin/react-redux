@@ -9,6 +9,8 @@
     "placeholder":"add/edit new data",
     "Edit":"edit",
     "Name":"Name",
-    "NoData":"No Data please add any data"
+    "NoData":"No Data please add any data",
+    "messageSuccess":"Success Done ",
+"messageError":"please rty again "
 
 }

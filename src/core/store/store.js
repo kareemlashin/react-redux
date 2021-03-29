@@ -27,6 +27,15 @@ const reducers = (state = initialState, action) => {
 
     }
     
+    else if (action.type == 'loadingPage') {
+
+        return {
+            ...state,
+            loadingPage:action.loadingPage
+        }
+
+    }
+    
     else if (action.type == 'message') {
 
         return {

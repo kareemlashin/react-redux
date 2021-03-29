@@ -14,7 +14,8 @@ import './i18n'
 import { Suspense } from 'react'
 import {Provider} from 'react-redux'
 import store from './core/store/store.js'
-import 'react-notifications/lib/notifications.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
     <Suspense fallback={<></>}>
 
     <div >
+    <ToastContainer />
 
       <Router>
         <Route path={['/Add', '/Edit',"/","*"]}>

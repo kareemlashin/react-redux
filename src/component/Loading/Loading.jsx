@@ -9,7 +9,7 @@ class Loading extends PureComponent {
   render() {
     return (
       <div className="LoadingWrapper">
-        {this.props.spinner ? (
+        {this.props.loadingPage ? (
           <div>
             <div id="loading-wrapper">
               <div id="loading-text">LOADING </div>
@@ -25,7 +25,8 @@ class Loading extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  spinner: state.reducers.spinner,
+  loadingPage: state.reducers.loadingPage,
+  
 })
 
 const mapDispatchToProps = (dispatch) => ({})
